@@ -12,10 +12,7 @@ import (
 const INPUT_LENGTH = 1000
 
 func main() {
-	input, err := os.ReadFile("./1/input.txt")
-	if err != nil {
-		panic(err)
-	}
+	input, _ := os.ReadFile("./1/input.txt")
 	lefts := make([]int, INPUT_LENGTH)
 	rights := make([]int, INPUT_LENGTH)
 
