@@ -1,4 +1,4 @@
-package main
+package day_3
 
 import (
 	"fmt"
@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-func main() {
-	input, _ := os.ReadFile("./3/input.txt")
+func Part2(inputPath string) {
+	input, _ := os.ReadFile(inputPath)
 	inputRunes := []rune(string(input))
 
 	state := "valid"

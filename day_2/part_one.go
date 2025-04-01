@@ -1,4 +1,4 @@
-package main
+package day_2
 
 import (
 	"bufio"
@@ -9,8 +9,8 @@ import (
 	"strings"
 )
 
-func main() {
-	file, _ := os.Open("./2/input.txt")
+func Part1(inputPath string) {
+	file, _ := os.Open(inputPath)
 	scanner := bufio.NewScanner(file)
 	validCount := 0
 
@@ -20,38 +20,14 @@ func main() {
 		for i, numAsStr := range numsAsStrings {
 			ints[i], _ = strconv.Atoi(numAsStr)
 		}
-
-		if isValidTolerated(ints) {
+		isValidDiffs := isValidDiffs(ints)
+		isAllDecreasing := isAllDecreasing(ints)
+		isAllIncreasing := isAllIncreasing(ints)
+		if isValidDiffs && (isAllDecreasing || isAllIncreasing) {
 			validCount++
 		}
-
 	}
 	fmt.Println("Result it ", validCount)
-}
-
-func isValidTolerated(ints []int) bool {
-	if isValid(ints) {
-		return true
-	}
-	for i := 0; i < len(ints); i++ {
-		toleratedInts := []int{}
-		toleratedInts = append(toleratedInts, ints[:i]...)
-		toleratedInts = append(toleratedInts, ints[i+1:]...)
-		if isValid(toleratedInts) {
-			return true
-		}
-	}
-	return false
-}
-
-func isValid(ints []int) bool {
-	isValidDiffs := isValidDiffs(ints)
-	isAllDecreasing := isAllDecreasing(ints)
-	isAllIncreasing := isAllIncreasing(ints)
-	if isValidDiffs && (isAllDecreasing || isAllIncreasing) {
-		return true
-	}
-	return false
 }
 
 func isValidDiffs(val []int) bool {

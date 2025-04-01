@@ -1,4 +1,4 @@
-package main
+package day_1
 
 import (
 	"bytes"
@@ -9,10 +9,9 @@ import (
 	"strconv"
 )
 
-const INPUT_LENGTH = 1000
-
-func main() {
-	input, _ := os.ReadFile("./1/input.txt")
+func Part1(inputPath string) {
+	const INPUT_LENGTH = 1000
+	input, _ := os.ReadFile(inputPath)
 	lefts := make([]int, INPUT_LENGTH)
 	rights := make([]int, INPUT_LENGTH)
 

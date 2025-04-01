@@ -1,4 +1,4 @@
-package main
+package day_3
 
 import (
 	"fmt"
@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-func mainn() {
-	input, _ := os.ReadFile("./3/input.txt")
+func Part1(inputPath string) {
+	input, _ := os.ReadFile(inputPath)
 	re := regexp.MustCompile(`mul\(\d{1,3},\d{1,3}\)`)
 
 	acc := 0
