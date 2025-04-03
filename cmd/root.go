@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -10,6 +11,7 @@ import (
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_2"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_3"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_4"
+	"github.com/alex-popov-tech/advent_of_code_2024_go/day_5"
 )
 
 var (
@@ -20,21 +22,31 @@ var (
 type task func()
 
 var tasks = [][]task{
+	{},
 	{
+		func() {},
 		func() { day_1.Part1("./inputs/day_1.txt") },
 		func() { day_1.Part2("./inputs/day_1.txt") },
 	},
 	{
+		func() {},
 		func() { day_2.Part1("./inputs/day_2.txt") },
 		func() { day_2.Part2("./inputs/day_2.txt") },
 	},
 	{
+		func() {},
 		func() { day_3.Part1("./inputs/day_3.txt") },
 		func() { day_3.Part2("./inputs/day_3.txt") },
 	},
 	{
+		func() {},
 		func() { day_4.Part1("./inputs/day_4.txt") },
-		// func() { day_4.Part2("./inputs/day_4.txt") },
+		func() { day_4.Part2("./inputs/day_4.txt") },
+	},
+	{
+		func() {},
+		func() { day_5.Part1("./inputs/day_5.txt") },
+		// func() { day_5.Part2("./inputs/day_4.txt") },
 	},
 }
 
@@ -57,7 +69,13 @@ var rootCmd = &cobra.Command{
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {
-		tasks[*day-1][*part-1]()
+		if (*day) >= len(tasks) {
+			log.Fatalf("There is no day '%d' assignment", *day)
+		}
+		if (*part) >= len(tasks[*day]) {
+			log.Fatalf("There is no day '%d' part '%d' assignment", *day, *part)
+		}
+		tasks[*day][*part]()
 	},
 }
 
