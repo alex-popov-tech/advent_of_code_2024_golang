@@ -46,7 +46,7 @@ var tasks = [][]task{
 	{
 		func() {},
 		func() { day_5.Part1("./inputs/day_5.txt") },
-		// func() { day_5.Part2("./inputs/day_4.txt") },
+		func() { day_5.Part2("./inputs/day_5.txt") },
 	},
 }
 

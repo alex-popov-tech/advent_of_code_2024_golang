@@ -1,10 +1,10 @@
 package day_5
 
 import (
-	"bytes"
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 )
 
 // --- Day 5: Print Queue ---
@@ -87,7 +87,8 @@ func Part1(inputPath string) {
 	if err != nil {
 		panic(err)
 	}
-	parts := bytes.Split(input, []byte("\n\n"))
+	inputStr := strings.Trim(string(input), "\n")
+	parts := strings.Split(inputStr, "\n\n")
 	rules := parseRules(parts[0])
 	updates := parseUpdates(parts[1])
 
@@ -112,10 +113,10 @@ outer:
 	fmt.Println("Result is", res)
 }
 
-func parseRules(rules []byte) map[int][]int {
+func parseRules(rules string) map[int][]int {
 	res := make(map[int][]int)
-	for _, rule := range bytes.Split(rules, []byte("\n")) {
-		pages := bytes.Split(rule, []byte("|"))
+	for _, rule := range strings.Split(rules, "\n") {
+		pages := strings.Split(rule, "|")
 		first, _ := strconv.Atoi(string(pages[0]))
 		second, _ := strconv.Atoi(string(pages[1]))
 		res[first] = append(res[first], second)
@@ -123,11 +124,11 @@ func parseRules(rules []byte) map[int][]int {
 	return res
 }
 
-func parseUpdates(updates []byte) [][]int {
-	updatesSlice := bytes.Split(updates, []byte("\n"))
+func parseUpdates(updates string) [][]int {
+	updatesSlice := strings.Split(updates, "\n")
 	res := make([][]int, len(updatesSlice))
 	for i, update := range updatesSlice {
-		pages := bytes.Split(update, []byte(","))
+		pages := strings.Split(update, ",")
 		for _, page := range pages {
 			num, _ := strconv.Atoi(string(page))
 			res[i] = append(res[i], num)
