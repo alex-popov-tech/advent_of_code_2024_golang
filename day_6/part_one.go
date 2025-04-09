@@ -105,7 +105,7 @@ func Part1(inputPath string) {
 	lines := strings.Split(inputStr, "\n")
 	m := NewMatrix(lines)
 	currRow, currColumn := m.getGuardPosition()
-	currDirection := NewDirection(m.peek(currRow, currColumn))
+	currDirection := NewDirection1(m.peek(currRow, currColumn))
 	for {
 		fmt.Println("==================")
 		m.print()
@@ -140,17 +140,17 @@ func Part1(inputPath string) {
 	}
 }
 
-type Direction rune
+type Direction1 rune
 
 const (
-	UP    Direction = '^'
-	DOWN  Direction = 'v'
-	RIGHT Direction = '>'
-	LEFT  Direction = '<'
+	UP    Direction1 = '^'
+	DOWN  Direction1 = 'v'
+	RIGHT Direction1 = '>'
+	LEFT  Direction1 = '<'
 )
 
-func (d Direction) String() string {
-	return map[Direction]string{
+func (d Direction1) String() string {
+	return map[Direction1]string{
 		UP:    "UP",
 		DOWN:  "DOWN",
 		RIGHT: "RIGHT",
@@ -158,7 +158,7 @@ func (d Direction) String() string {
 	}[d]
 }
 
-func (d Direction) TurnRight() Direction {
+func (d Direction1) TurnRight() Direction1 {
 	switch d {
 	case UP:
 		return RIGHT
@@ -174,7 +174,7 @@ func (d Direction) TurnRight() Direction {
 	}
 }
 
-func NewDirection(r rune) Direction {
+func NewDirection1(r rune) Direction1 {
 	switch r {
 	case '^':
 		return UP
@@ -265,7 +265,7 @@ func (m *Matrix) visit(row, column int) {
 	m.matrix[row][column] = rune(VISITED)
 }
 
-func (m *Matrix) putGuard(row, column int, direction Direction) {
+func (m *Matrix) putGuard(row, column int, direction Direction1) {
 	mustValid(row, column, m.matrix)
 	m.matrix[row][column] = rune(direction)
 }
@@ -275,7 +275,7 @@ func (m Matrix) peek(row, column int) rune {
 	return m.matrix[row][column]
 }
 
-func nextPosition(row, column int, direction Direction) (int, int) {
+func nextPosition(row, column int, direction Direction1) (int, int) {
 	switch direction {
 	case UP:
 		return row - 1, column
@@ -290,7 +290,7 @@ func nextPosition(row, column int, direction Direction) (int, int) {
 	}
 }
 
-func (m Matrix) peekNext(currentRow, currentColumn int, direction Direction) (CellType, bool) {
+func (m Matrix) peekNext(currentRow, currentColumn int, direction Direction1) (CellType, bool) {
 	mustValid(currentRow, currentColumn, m.matrix)
 	nextRow, nextColumn := nextPosition(currentRow, currentColumn, direction)
 	fmt.Println("peekNext", nextRow, nextColumn, "isValid", isValid(nextRow, nextColumn, m.matrix))

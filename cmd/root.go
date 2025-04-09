@@ -52,7 +52,7 @@ var tasks = [][]task{
 	{
 		func() {},
 		func() { day_6.Part1("./inputs/day_6.txt") },
-		// func() { day_6.Part2("./inputs/day_6.txt") },
+		func() { day_6.Part2("./inputs/day_6.txt") },
 	},
 }
 
