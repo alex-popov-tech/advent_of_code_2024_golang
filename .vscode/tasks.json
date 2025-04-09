@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-aoc",
+            "type": "shell",
+            "command": "go build -o ${workspaceFolder}/aoc",
+            "group": "build",
+            "problemMatcher": ["$go"],
+            "presentation": {
+                "reveal": "silent" // Prevents build output from cluttering the debug console
+            }
+        }
+    ]
+}
