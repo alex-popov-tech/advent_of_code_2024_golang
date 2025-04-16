@@ -14,6 +14,7 @@ import (
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_5"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_6"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_7"
+	"github.com/alex-popov-tech/advent_of_code_2024_go/day_8"
 )
 
 var (
@@ -59,6 +60,11 @@ var tasks = [][]task{
 		func() {},
 		func() { day_7.Part1("./inputs/day_7.txt") },
 		func() { day_7.Part2("./inputs/day_7.txt") },
+	},
+	{
+		func() {},
+		func() { day_8.Part1("./inputs/day_8.txt") },
+		func() { day_8.Part2("./inputs/day_8.txt") },
 	},
 }
 
