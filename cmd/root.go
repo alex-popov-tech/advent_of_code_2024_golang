@@ -8,6 +8,7 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_1"
+	"github.com/alex-popov-tech/advent_of_code_2024_go/day_10"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_2"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_3"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_4"
@@ -71,6 +72,11 @@ var tasks = [][]task{
 		func() {},
 		func() { day_9.Part1("./inputs/day_9.txt") },
 		func() { day_9.Part2("./inputs/day_9.txt") },
+	},
+	{
+		func() {},
+		func() { day_10.Part("./inputs/day_10.txt") },
+		func() { day_10.Part("./inputs/day_10.txt") },
 	},
 }
 
