@@ -2,7 +2,6 @@ package day_5
 
 import (
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 )
@@ -82,11 +81,7 @@ import (
 //
 // Determine which updates are already in the correct order. What do you get if you add up the middle page number from those correctly-ordered updates?
 
-func Part1(inputPath string) {
-	input, err := os.ReadFile(inputPath)
-	if err != nil {
-		panic(err)
-	}
+func Part1(input []byte) {
 	inputStr := strings.Trim(string(input), "\n")
 	parts := strings.Split(inputStr, "\n\n")
 	rules := parseRules(parts[0])

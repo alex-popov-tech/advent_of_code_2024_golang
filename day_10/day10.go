@@ -2,7 +2,6 @@ package day_10
 
 import (
 	"fmt"
-	"os"
 	"strings"
 )
 
@@ -120,11 +119,7 @@ import (
 //
 // You're not sure how, but the reindeer seems to have crafted some tiny flags out of toothpicks and bits of paper and is using them to mark trailheads on your topographic map. What is the sum of the ratings of all trailheads?
 
-func Part(inputPath string) {
-	input, err := os.ReadFile(inputPath)
-	if err != nil {
-		panic(err)
-	}
+func Part(input []byte) {
 	lines := strings.Split(strings.Trim(string(input), "\n"), "\n")
 	matrix := toMatrix(lines)
 	for _, it := range matrix {

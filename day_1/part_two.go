@@ -2,8 +2,8 @@ package day_1
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 )
@@ -24,11 +24,10 @@ import (
 // The last number, 3, appears in the right list three times; the similarity score again increases by 9.
 // So, for these example lists, the similarity score at the end of this process is 31 (9 + 4 + 0 + 0 + 9 + 9).
 
-func Part2(inputPath string) {
-	const INPUT_LENGTH = 1000
-	file, _ := os.Open(inputPath)
-	defer file.Close()
-	scanner := bufio.NewScanner(file)
+const INPUT_LENGTH = 1000
+
+func Part2(input []byte) {
+	scanner := bufio.NewScanner(bytes.NewReader(input))
 	lefts := make([]int, INPUT_LENGTH)
 	rights := make(map[int]int, INPUT_LENGTH)
 

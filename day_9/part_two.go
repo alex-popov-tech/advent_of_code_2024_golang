@@ -2,7 +2,6 @@ package day_9
 
 import (
 	"fmt"
-	"os"
 	"strings"
 )
 
@@ -24,11 +23,7 @@ import (
 //
 // Start over, now compacting the amphipod's hard drive using this new method instead. What is the resulting filesystem checksum?
 
-func Part2(inputPath string) {
-	input, err := os.ReadFile(inputPath)
-	if err != nil {
-		panic(err)
-	}
+func Part2(input []byte) {
 	line := strings.Trim(string(input), "\n")
 	fmt.Printf("'%s'\n", line)
 	blocks := toBlocks(line)

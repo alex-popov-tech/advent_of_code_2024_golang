@@ -2,15 +2,14 @@ package day_2
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 )
 
-func Part2(inputPath string) {
-	file, _ := os.Open(inputPath)
-	scanner := bufio.NewScanner(file)
+func Part2(input []byte) {
+	scanner := bufio.NewScanner(bytes.NewReader(input))
 	validCount := 0
 
 	for scanner.Scan() {

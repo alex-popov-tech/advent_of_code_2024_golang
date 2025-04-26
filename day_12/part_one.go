@@ -2,7 +2,6 @@ package day_12
 
 import (
 	"fmt"
-	"os"
 	"strings"
 )
 
@@ -86,11 +85,7 @@ import (
 //
 // What is the total price of fencing all regions on your map?
 
-func Part1(inputPath string) {
-	input, err := os.ReadFile(inputPath)
-	if err != nil {
-		panic(err)
-	}
+func Part1(input []byte) {
 	line := strings.Trim(string(input), "\n")
 	tiles := parse(line)
 	for _, line := range tiles {

@@ -11,6 +11,8 @@ import (
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_10"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_11"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_12"
+	"github.com/alex-popov-tech/advent_of_code_2024_go/day_13"
+	"github.com/alex-popov-tech/advent_of_code_2024_go/day_14"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_2"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_3"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_4"
@@ -32,63 +34,73 @@ var tasks = [][]task{
 	{},
 	{
 		func() {},
-		func() { day_1.Part1("./inputs/day_1.txt") },
-		func() { day_1.Part2("./inputs/day_1.txt") },
+		func() { day_1.Part1(readfile("./inputs/day_1.txt")) },
+		func() { day_1.Part2(readfile("./inputs/day_1.txt")) },
 	},
 	{
 		func() {},
-		func() { day_2.Part1("./inputs/day_2.txt") },
-		func() { day_2.Part2("./inputs/day_2.txt") },
+		func() { day_2.Part1(readfile("./inputs/day_2.txt")) },
+		func() { day_2.Part2(readfile("./inputs/day_2.txt")) },
 	},
 	{
 		func() {},
-		func() { day_3.Part1("./inputs/day_3.txt") },
-		func() { day_3.Part2("./inputs/day_3.txt") },
+		func() { day_3.Part1(readfile("./inputs/day_3.txt")) },
+		func() { day_3.Part2(readfile("./inputs/day_3.txt")) },
 	},
 	{
 		func() {},
-		func() { day_4.Part1("./inputs/day_4.txt") },
-		func() { day_4.Part2("./inputs/day_4.txt") },
+		func() { day_4.Part1(readfile("./inputs/day_4.txt")) },
+		func() { day_4.Part2(readfile("./inputs/day_4.txt")) },
 	},
 	{
 		func() {},
-		func() { day_5.Part1("./inputs/day_5.txt") },
-		func() { day_5.Part2("./inputs/day_5.txt") },
+		func() { day_5.Part1(readfile("./inputs/day_5.txt")) },
+		func() { day_5.Part2(readfile("./inputs/day_5.txt")) },
 	},
 	{
 		func() {},
-		func() { day_6.Part1("./inputs/day_6.txt") },
-		func() { day_6.Part2("./inputs/day_6.txt") },
+		func() { day_6.Part1(readfile("./inputs/day_6.txt")) },
+		func() { day_6.Part2(readfile("./inputs/day_6.txt")) },
 	},
 	{
 		func() {},
-		func() { day_7.Part1("./inputs/day_7.txt") },
-		func() { day_7.Part2("./inputs/day_7.txt") },
+		func() { day_7.Part1(readfile("./inputs/day_7.txt")) },
+		func() { day_7.Part2(readfile("./inputs/day_7.txt")) },
 	},
 	{
 		func() {},
-		func() { day_8.Part1("./inputs/day_8.txt") },
-		func() { day_8.Part2("./inputs/day_8.txt") },
+		func() { day_8.Part1(readfile("./inputs/day_8.txt")) },
+		func() { day_8.Part2(readfile("./inputs/day_8.txt")) },
 	},
 	{
 		func() {},
-		func() { day_9.Part1("./inputs/day_9.txt") },
-		func() { day_9.Part2("./inputs/day_9.txt") },
+		func() { day_9.Part1(readfile("./inputs/day_9.txt")) },
+		func() { day_9.Part2(readfile("./inputs/day_9.txt")) },
 	},
 	{
 		func() {},
-		func() { day_10.Part("./inputs/day_10.txt") },
-		func() { day_10.Part("./inputs/day_10.txt") },
+		func() { day_10.Part(readfile("./inputs/day_10.txt")) },
+		func() { day_10.Part(readfile("./inputs/day_10.txt")) },
 	},
 	{
 		func() {},
-		func() { day_11.Part1("./inputs/day_11.txt") },
-		func() { day_11.Part2("./inputs/day_11.txt") },
+		func() { day_11.Part1(readfile("./inputs/day_11.txt")) },
+		func() { day_11.Part2(readfile("./inputs/day_11.txt")) },
 	},
 	{
 		func() {},
-		func() { day_12.Part1("./inputs/day_12.txt") },
-		func() { day_12.Part2("./inputs/day_12.txt") },
+		func() { day_12.Part1(readfile("./inputs/day_12.txt")) },
+		func() { day_12.Part2(readfile("./inputs/day_12.txt")) },
+	},
+	{
+		func() {},
+		func() { day_13.Part1(readfile("./inputs/day_13.txt")) },
+		func() { day_13.Part2(readfile("./inputs/day_13.txt")) },
+	},
+	{
+		func() {},
+		func() { day_14.Part1(readfile("./inputs/day_14.txt")) },
+		// func() { day_14.Part2("./inputs/day_14.txt") },
 	},
 }
 
@@ -143,4 +155,12 @@ func init() {
 	rootCmd.MarkFlagRequired("day")
 	part = rootCmd.Flags().IntP("part", "p", 0, "# of part to run")
 	rootCmd.MarkFlagRequired("part")
+}
+
+func readfile(path string) []byte {
+	input, err := os.ReadFile(path)
+	if err != nil {
+		panic(err)
+	}
+	return input
 }

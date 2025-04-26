@@ -73,11 +73,7 @@ type Seg struct {
 	kind       rune // 'u','d','l','r'
 }
 
-func Part2(inputPath string) {
-	input, err := os.ReadFile(inputPath)
-	if err != nil {
-		panic(err)
-	}
+func Part2(input []byte) {
 	grid := strings.Split(strings.Trim(string(input), "\n"), "\n")
 	n, m := len(grid), len(grid[0])
 	vis := make([][]bool, n)

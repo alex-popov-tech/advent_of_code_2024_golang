@@ -2,14 +2,12 @@ package day_3
 
 import (
 	"fmt"
-	"os"
 	"regexp"
 	"strconv"
 	"strings"
 )
 
-func Part1(inputPath string) {
-	input, _ := os.ReadFile(inputPath)
+func Part1(input []byte) {
 	re := regexp.MustCompile(`mul\(\d{1,3},\d{1,3}\)`)
 
 	acc := 0

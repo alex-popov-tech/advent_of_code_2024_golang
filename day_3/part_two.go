@@ -2,14 +2,12 @@ package day_3
 
 import (
 	"fmt"
-	"os"
 	"regexp"
 	"strconv"
 	"strings"
 )
 
-func Part2(inputPath string) {
-	input, _ := os.ReadFile(inputPath)
+func Part2(input []byte) {
 	inputRunes := []rune(string(input))
 
 	state := "valid"

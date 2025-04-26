@@ -2,7 +2,6 @@ package day_7
 
 import (
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 )
@@ -21,11 +20,7 @@ import (
 //
 // Using your new knowledge of elephant hiding spots, determine which equations could possibly be true. What is their total calibration result?
 
-func Part2(inputPath string) {
-	input, err := os.ReadFile(inputPath)
-	if err != nil {
-		panic(err)
-	}
+func Part2(input []byte) {
 	inputStr := strings.Trim(string(input), "\n")
 	lines := strings.Split(inputStr, "\n")
 

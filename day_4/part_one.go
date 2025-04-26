@@ -2,7 +2,6 @@ package day_4
 
 import (
 	"fmt"
-	"os"
 	"strings"
 )
 
@@ -46,11 +45,7 @@ import (
 
 var xmas = []rune{'X', 'M', 'A', 'S'}
 
-func Part1(inputPath string) {
-	input, err := os.ReadFile(inputPath)
-	if err != nil {
-		panic(err)
-	}
+func Part1(input []byte) {
 	lines := strings.Split(strings.Trim(string(input), "\n"), "\n")
 	matrix := make([][]rune, len(lines))
 	for i, line := range lines {

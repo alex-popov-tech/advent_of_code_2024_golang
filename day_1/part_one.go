@@ -4,14 +4,12 @@ import (
 	"bytes"
 	"fmt"
 	"math"
-	"os"
 	"sort"
 	"strconv"
 )
 
-func Part1(inputPath string) {
+func Part1(input []byte) {
 	const INPUT_LENGTH = 1000
-	input, _ := os.ReadFile(inputPath)
 	lefts := make([]int, INPUT_LENGTH)
 	rights := make([]int, INPUT_LENGTH)
 

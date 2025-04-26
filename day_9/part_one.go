@@ -2,7 +2,6 @@ package day_9
 
 import (
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 )
@@ -52,11 +51,7 @@ import (
 //
 // Continuing the first example, the first few blocks' position multiplied by its file ID number are 0 * 0 = 0, 1 * 0 = 0, 2 * 9 = 18, 3 * 9 = 27, 4 * 8 = 32, and so on. In this example, the checksum is the sum of these, 1928.
 
-func Part1(inputPath string) {
-	input, err := os.ReadFile(inputPath)
-	if err != nil {
-		panic(err)
-	}
+func Part1(input []byte) {
 	line := strings.Trim(string(input), "\n")
 	fmt.Printf("'%s'\n", line)
 	expanded := expand(line)

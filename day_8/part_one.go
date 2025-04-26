@@ -2,7 +2,6 @@ package day_8
 
 import (
 	"fmt"
-	"os"
 	"strings"
 )
 
@@ -81,11 +80,7 @@ import (
 //
 // Calculate the impact of the signal. How many unique locations within the bounds of the map contain an antinode?
 
-func Part1(inputPath string) {
-	input, err := os.ReadFile(inputPath)
-	if err != nil {
-		panic(err)
-	}
+func Part1(input []byte) {
 	inputStr := strings.Trim(string(input), "\n")
 	lines := strings.Split(inputStr, "\n")
 	matrix := make([][]rune, len(lines))

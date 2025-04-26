@@ -3,7 +3,6 @@ package day_6
 import (
 	"fmt"
 	"log"
-	"os"
 	"strings"
 )
 
@@ -96,11 +95,7 @@ import (
 //
 // Predict the path of the guard. How many distinct positions will the guard visit before leaving the mapped area?
 
-func Part1(inputPath string) {
-	input, err := os.ReadFile(inputPath)
-	if err != nil {
-		panic(err)
-	}
+func Part1(input []byte) {
 	inputStr := strings.Trim(string(input), "\n")
 	lines := strings.Split(inputStr, "\n")
 	m := NewMatrix(lines)

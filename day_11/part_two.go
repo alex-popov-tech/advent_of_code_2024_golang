@@ -3,7 +3,6 @@ package day_11
 import (
 	"fmt"
 	"math/big"
-	"os"
 	"strconv"
 	"strings"
 )
@@ -13,11 +12,7 @@ import (
 //
 // How many stones would you have after blinking a total of 75 times?
 
-func Part2(inputPath string) {
-	input, err := os.ReadFile(inputPath)
-	if err != nil {
-		panic(err)
-	}
+func Part2(input []byte) {
 	line := strings.Trim(string(input), "\n")
 	stones := parse(line)
 	blinks := 75

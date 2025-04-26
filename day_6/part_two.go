@@ -2,7 +2,6 @@ package day_6
 
 import (
 	"fmt"
-	"os"
 	"strings"
 )
 
@@ -94,11 +93,7 @@ import (
 //
 // You need to get the guard stuck in a loop by adding a single new obstruction. How many different positions could you choose for this obstruction?
 
-func Part2(inputPath string) {
-	input, err := os.ReadFile(inputPath)
-	if err != nil {
-		panic(err)
-	}
+func Part2(input []byte) {
 	inputStr := strings.Trim(string(input), "\n")
 	lines := strings.Split(inputStr, "\n")
 
