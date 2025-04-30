@@ -124,10 +124,15 @@ import (
 
 func Part1(input []byte) {
 	line := strings.Trim(string(input), "\n")
+	const rows = 103
+	const columns = 101
+	const steps = 100
+
 	robots := parse(line)
+
 	for _, it := range robots {
 		fmt.Printf(
-			"Robot %s is at %d,%d, vel %d,%d\n",
+			"Robot %s is at column:%d,row:%d, vel column:%d,row:%d\n",
 			it.name,
 			it.pos.column,
 			it.pos.row,
@@ -135,8 +140,23 @@ func Part1(input []byte) {
 			it.vel.row,
 		)
 	}
-	res := 0
+
+	for i := range robots {
+		for range steps {
+			robots[i].move(rows, columns)
+			prettyPrint(rows, columns, robots)
+		}
+	}
+
+	prettyPrintQuadrants(rows, columns, robots)
+
+	res := countRobotsInQuadrants(rows, columns, robots)
 	fmt.Println("Result is", res)
+}
+
+type pos struct {
+	column int
+	row    int
 }
 
 type robot struct {
@@ -146,15 +166,55 @@ type robot struct {
 	second int
 }
 
-type pos struct {
-	column int
-	row    int
+func (r *robot) move(maxRow, maxColumn int) {
+	newRow := r.pos.row + r.vel.row
+	newColumn := r.pos.column + r.vel.column
+	// was 1:4 ( 1-3:4+2  == -2:6)
+	// became 5:6
+	// v=2,-3 ( first columns, second rows )
+	// 7 rows, 11 columns
+	if newRow < 0 {
+		newRow = maxRow + newRow
+	}
+	if newRow >= maxRow {
+		newRow = newRow - maxRow
+	}
+	if newColumn < 0 {
+		newColumn = maxColumn + newColumn
+	}
+	if newColumn >= maxColumn {
+		newColumn = newColumn - maxColumn
+	}
+	r.pos = pos{row: newRow, column: newColumn}
+}
+
+func countRobotsInQuadrants(rows, columns int, robots []robot) int {
+	topLeft := 0
+	topRight := 0
+	bottomLeft := 0
+	bottomRight := 0
+	for _, it := range robots {
+		if it.pos.column == columns/2 || it.pos.row == rows/2 {
+			continue
+		} else if it.pos.column < columns/2 && it.pos.row < rows/2 {
+			topLeft++
+		} else if it.pos.column < columns/2 && it.pos.row > rows/2 {
+			bottomLeft++
+		} else if it.pos.column > columns/2 && it.pos.row < rows/2 {
+			topRight++
+		} else if it.pos.column > columns/2 && it.pos.row > rows/2 {
+			bottomRight++
+		}
+	}
+
+	fmt.Println("Counted robots in quadrants", topLeft, topRight, bottomLeft, bottomRight)
+	return topLeft * bottomRight * topRight * bottomLeft
 }
 
 func parse(input string) []robot {
 	lines := strings.Split(input, "\n")
 	// p=2,4 v=2,-3
-	robotRegexp := regexp.MustCompile(`p=(\d+),(\d+) v=(\d+),(-?\d+)`)
+	robotRegexp := regexp.MustCompile(`p=(\d+),(\d+) v=(-?\d+),(-?\d+)`)
 	var robots []robot
 
 	for i, line := range lines {
@@ -182,4 +242,48 @@ func atoi(s string) int {
 		panic(err)
 	}
 	return res
+}
+
+func prettyPrint(rows, columns int, robots []robot) {
+	robotsPerTile := make([][]int, columns)
+	for i := range columns {
+		robotsPerTile[i] = make([]int, rows)
+	}
+	for _, robot := range robots {
+		robotsPerTile[robot.pos.column][robot.pos.row]++
+	}
+
+	for row := range rows {
+		for column := range columns {
+			if robotsPerTile[column][row] == 0 {
+				fmt.Printf(".")
+			} else {
+				fmt.Printf("%d", robotsPerTile[column][row])
+			}
+		}
+		fmt.Println()
+	}
+}
+
+func prettyPrintQuadrants(rows, columns int, robots []robot) {
+	robotsPerTile := make([][]int, columns)
+	for i := range columns {
+		robotsPerTile[i] = make([]int, rows)
+	}
+	for _, robot := range robots {
+		robotsPerTile[robot.pos.column][robot.pos.row]++
+	}
+
+	for row := range rows {
+		for column := range columns {
+			if column == columns/2 || row == rows/2 {
+				fmt.Printf(" ")
+			} else if robotsPerTile[column][row] == 0 {
+				fmt.Printf(".")
+			} else {
+				fmt.Printf("%d", robotsPerTile[column][row])
+			}
+		}
+		fmt.Println()
+	}
 }

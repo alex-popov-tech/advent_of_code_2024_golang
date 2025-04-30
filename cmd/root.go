@@ -100,7 +100,7 @@ var tasks = [][]task{
 	{
 		func() {},
 		func() { day_14.Part1(readfile("./inputs/day_14.txt")) },
-		// func() { day_14.Part2("./inputs/day_14.txt") },
+		func() { day_14.Part2(readfile("./inputs/day_14.txt")) },
 	},
 }
 
