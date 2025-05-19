@@ -336,9 +336,7 @@ func prettyPrint2(mop [][]rune, focus *tile, clear bool) {
 			column: -1,
 		}
 	}
-	if clear {
-		fmt.Print("\033[H\033[2J")
-	}
+	fmt.Print("\033[H\033[2J")
 	for row, line := range mop {
 		sb := strings.Builder{}
 		for column, c := range line {
