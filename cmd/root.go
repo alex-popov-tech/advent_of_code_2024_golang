@@ -20,6 +20,7 @@ import (
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_19"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_20"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_21"
+	"github.com/alex-popov-tech/advent_of_code_2024_go/day_22"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_2"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_3"
 	"github.com/alex-popov-tech/advent_of_code_2024_go/day_4"
@@ -143,6 +144,11 @@ var tasks = [][]task{
 		func() {},
 		func() { day_21.Part1(readfile("./inputs/day_21.txt")) },
 		func() { day_21.Part2(readfile("./inputs/day_21.txt")) },
+	},
+	{
+		func() {},
+		func() { day_22.Part1(readfile("./inputs/day_22.txt")) },
+		func() { day_22.Part2(readfile("./inputs/day_22.txt")) },
 	},
 }
 
