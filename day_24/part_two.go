@@ -7,6 +7,23 @@ import (
 	"strings"
 )
 
+// so for this one i tried to came up with solution myself, but i might
+// be too stupid for that, so i went to AI and ask it ( gemini, openai, deepseek )
+// and they all generated not working solutions again and again
+// then i asked to came up with theoretical solving algorithm, and they
+// failed again
+// then i found https://old.reddit.com/r/adventofcode/comments/1hla5ql/2024_day_24_part_2_a_guide_on_the_idea_behind_the/
+// and asked AI to rewrite kotlin to golang, and it worked perfectly
+// i still have no idea how this works, but i don't case so much to spend more time on it
+func Part2(input []byte) {
+	registers, gates := parseInput(input)
+	// Part 2:
+	// Need to re-parse, since solvePart1 mutated neither registers nor gates.
+	// But solvePart2 also works on its own copies, so we can call directly:
+	part2 := solvePart2(registers, gates)
+	fmt.Println(part2)
+}
+
 type Operation2 int
 
 const (
@@ -284,22 +301,4 @@ func solvePart2(initialRegs map[string]int, gates []*Gate) string {
 
 	sort.Strings(allCs)
 	return strings.Join(allCs, ",")
-}
-
-// so for this one i tried to came up with solution myself, but i might
-// be too stupid for that, so i went to AI and ask it ( gemini, openai, deepseek )
-// and they all generated not working solutions again and again
-// then i asked to came up with theoretical solving algorithm, and they
-// failed again
-// then i found https://old.reddit.com/r/adventofcode/comments/1hla5ql/2024_day_24_part_2_a_guide_on_the_idea_behind_the/
-// and asked AI to rewrite kotlin to golang, and it worked perfectly
-// i still have no idea how this works, but i don't case so much to spend more time on it
-func Part2(input []byte) {
-	registers, gates := parseInput(input)
-
-	// Part 2:
-	// Need to re-parse, since solvePart1 mutated neither registers nor gates.
-	// But solvePart2 also works on its own copies, so we can call directly:
-	part2 := solvePart2(registers, gates)
-	fmt.Println(part2)
 }

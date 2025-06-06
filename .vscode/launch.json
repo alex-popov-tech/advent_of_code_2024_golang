@@ -10,8 +10,8 @@
             "request": "launch",
             "mode": "exec",
             "program": "${workspaceFolder}/aoc",
-            "args": ["-d", "6", "-p", "1"],
-            "preLaunchTask": "build-aoc",
+            "args": ["-d", "24", "-p", "2"],
+            //"preLaunchTask": "build-aoc",
             "console": "integratedTerminal"
         }
     ]
